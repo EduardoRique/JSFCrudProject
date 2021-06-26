@@ -31,10 +31,8 @@ public class TarefaRepository {
 		tarefaEntity.setResponsavel(tarefaModel.getResponsavel());
 		tarefaEntity.setSituacao(tarefaModel.getSituacao());
 		tarefaEntity.setOrigemCadastro(tarefaModel.getOrigemCadastro());
-		System.out.println("AAAAAAAAALLLLLLLLOOOOOOO");
 		System.out.println(tarefaModel.getUsuarioModel().getCodigo());
 		UsuarioEntity usuarioEntity = entityManager.find(UsuarioEntity.class, tarefaModel.getUsuarioModel().getCodigo()); 
-		System.out.println("AAAAAQQQQQQUUUUUUIIIIIII");
 		tarefaEntity.setUsuarioEntity(usuarioEntity);
  
 		entityManager.persist(tarefaEntity);

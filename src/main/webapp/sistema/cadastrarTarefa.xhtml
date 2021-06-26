@@ -88,7 +88,27 @@
  
 	 		 		</h:form>
  
-	 			 </p:tab>		 		
+	 			 </p:tab>
+	 			 
+	 			 <p:tab title="Upload Xml Tarefa">
+ 
+   <h:form id="form-upload" enctype="multipart/form-data">
+ 
+      <h:panelGrid id="panelGrid-upload-xml" columns="2" cellpadding="10">
+ 
+	<p:fileUpload value="#{cadastrarTarefaController.file}" 
+		      mode="simple" 
+		      skinSimple="true" 
+		      label="Selecionar"/>
+ 
+	<p:commandButton value="Importar..." 
+		 	 ajax="false"
+		 	 actionListener="#{cadastrarTarefaController.UploadRegistros}"/>
+ 
+     </h:panelGrid>
+ 
+   </h:form>	 			 		
+</p:tab> 		
  
 	 		</p:tabView>
  
