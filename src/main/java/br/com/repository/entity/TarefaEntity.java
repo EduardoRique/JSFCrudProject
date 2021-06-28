@@ -11,10 +11,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
  
  
 @Entity
 @Table(name="tb_tarefa")
+ 
+@NamedQueries({
+ 
+	@NamedQuery(name = "TarefaEntity.findAll",query= "SELECT p FROM TarefaEntity p")
+ 
+})
 public class TarefaEntity {
  
 	@Id
