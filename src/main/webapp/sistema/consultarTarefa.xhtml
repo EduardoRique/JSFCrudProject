@@ -13,6 +13,17 @@
 <ui:composition template="/template/layoutBase.xhtml">
  
 	<ui:define name="content">
+	
+		<p:dialog header="Editar cadastro de tarefa"
+				  id="dialog-modal-editar"
+				  widgetVar="dialog-modal-editar"
+				  modal="true"
+				  height="400px"
+				  width="550px">
+				  
+				  <ui:include src="/sistema/editarTarefa.xhtml" />
+				  
+		</p:dialog>
  
 		<h:form style="margin:auto;margin-left:2%;" id="form-consulta">
  
@@ -51,7 +62,9 @@
         				 </p:column>
         				 
         				 <p:column headerText="Deadline">
-            				<h:outputText value="#{tarefa.deadline}" />
+            				<h:outputText value="#{tarefa.deadline}" >
+            				<f:convertDateTime pattern="dd/MM/yyyy" />
+            				</h:outputText>
         				 </p:column>
  
         				 <p:column headerText="Origem">
@@ -63,11 +76,29 @@
         				 </p:column>
  
         				 <p:column headerText="" style="width:25px;">
- 
+ 								<p:commandButton icon="ui-icon-check"
+ 												 id="commandButton-concluir"
+ 												 title="Concluir Tarefa"
+ 												 ajax="true"
+ 												 update="@form"
+ 												 actionListener="#{consultarTarefaController.ConcluirRegistro(tarefa)}" />
+        				 </p:column>
+        				 
+        				 <p:column headerText="" style="width:25px;">
+ 								<p:commandButton icon="ui-icon-pencil"
+ 												 title="Editar Registro"
+ 												 ajax="true"
+ 												 actionListener="#{consultarTarefaController.Editar(tarefa)}"
+ 												 oncomplete="PF('dialog-modal-editar').show();"
+ 												 update="dialog-modal-editar"/>
         				 </p:column>
  
         				 <p:column headerText="" style="width:25px;">
- 
+ 							 <p:commandButton icon="ui-icon-trash"
+ 												 title="Remover Registro"
+ 												 ajax="true"
+ 												 actionListener="#{consultarTarefaController.ExcluirTarefa(tarefa)}"
+ 												 update="@form"/>
         				 </p:column>
  
 			</p:dataTable>

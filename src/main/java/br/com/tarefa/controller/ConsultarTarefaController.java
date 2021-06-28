@@ -47,7 +47,51 @@ public class ConsultarTarefaController implements Serializable {
 	public void init(){
 		//RETORNAR AS TAREFAS CADASTRADAS	
 		this.tarefas = tarefaRepository.GetTarefas();
-
+	}
+	
+	/***
+	 * CARREGA INFORMAÇÕES DE UMA TAREFA PARA SER EDITADA
+	 * @param tarefaModel
+	 */
+	public void Editar(TarefaModel tarefaModel){
+ 
+		this.tarefaModel = tarefaModel;
+ 
+	}
+ 
+	/***
+	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
+	 */
+	public void AlterarRegistro(){
+ 
+		this.tarefaRepository.AlterarRegistro(this.tarefaModel);
+		/*RECARREGA OS REGISTROS*/
+		this.init();
+	}
+	
+	/***
+	 * CONCLUIR O REGISTRO QUE FOI ALTERADO
+	 */
+	public void ConcluirRegistro(TarefaModel tarefaModel){
+		this.tarefaModel = tarefaModel;
+		this.tarefaRepository.ConcluirRegistro(this.tarefaModel);
+		/*RECARREGA OS REGISTROS*/
+		this.init();
+	}
+	
+	/***
+	 * EXCLUINDO UM REGISTRO
+	 * @param tarefaModel
+	 */
+	public void ExcluirTarefa(TarefaModel tarefaModel){
+ 
+		//EXCLUI A TAREFA DO BANCO DE DADOS
+		this.tarefaRepository.ExcluirRegistro(tarefaModel.getCodigo());
+ 
+		//REMOVENDO A TAREFA DA LISTA
+		//ASSIM QUE É A TAREFA É REMOVIDA DA LISTA O DATATABLE É ATUALIZADO
+		this.tarefas.remove(tarefaModel);
+ 
 	}
  
  

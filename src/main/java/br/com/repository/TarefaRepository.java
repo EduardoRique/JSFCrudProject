@@ -88,6 +88,67 @@ public class TarefaRepository {
 		}
  
 		return tarefasModel;
+	}
+	
+	/***
+	 * CONSULTA UMA TAREFA CADASTRADA PELO CÓDIGO
+	 * @param codigo
+	 * @return
+	 */
+	private TarefaEntity GetTarefa(int codigo){
  
+		entityManager =  Uteis.JpaEntityManager();
+ 
+		return entityManager.find(TarefaEntity.class, codigo);
+	}
+ 
+	/***
+	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
+	 * @param tarefaModel
+	 */
+	public void AlterarRegistro(TarefaModel tarefaModel){
+ 
+		entityManager =  Uteis.JpaEntityManager();
+ 
+		TarefaEntity tarefaEntity = this.GetTarefa(tarefaModel.getCodigo());
+
+		tarefaEntity.setDeadline(tarefaModel.getDeadline());
+		tarefaEntity.setDescricao(tarefaModel.getDescricao());
+		tarefaEntity.setPrioridade(tarefaModel.getPrioridade());
+		tarefaEntity.setResponsavel(tarefaModel.getResponsavel());
+		tarefaEntity.setSituacao(tarefaModel.getSituacao());
+		tarefaEntity.setTitulo(tarefaModel.getTitulo());
+
+ 
+		entityManager.merge(tarefaEntity);
+	}
+	
+	/***
+	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
+	 * @param tarefaModel
+	 */
+	public void ConcluirRegistro(TarefaModel tarefaModel){
+ 
+		entityManager =  Uteis.JpaEntityManager();
+ 
+		TarefaEntity tarefaEntity = this.GetTarefa(tarefaModel.getCodigo());
+
+		tarefaEntity.setDeadline(tarefaModel.getDeadline());
+		tarefaEntity.setSituacao("Concluida");
+		
+		entityManager.merge(tarefaEntity);
+	}
+	
+	/***
+	 * EXCLUI UM REGISTRO DO BANCO DE DADOS
+	 * @param codigo
+	 */
+	public void ExcluirRegistro(int codigo){
+ 
+		entityManager =  Uteis.JpaEntityManager();		
+ 
+		TarefaEntity pessoaEntity = this.GetTarefa(codigo);
+ 
+		entityManager.remove(pessoaEntity);
 	}
 }
