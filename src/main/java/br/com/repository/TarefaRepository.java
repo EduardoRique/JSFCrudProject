@@ -53,7 +53,6 @@ public class TarefaRepository {
 		List<TarefaModel> tarefasModel = new ArrayList<TarefaModel>();
  
 		entityManager =  Uteis.JpaEntityManager();
-		System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
 		Query query = entityManager.createNamedQuery("TarefaEntity.findAll");
 		
 		@SuppressWarnings("unchecked")

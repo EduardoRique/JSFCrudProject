@@ -45,10 +45,9 @@ public class ConsultarTarefaController implements Serializable {
 	 */
 	@PostConstruct
 	public void init(){
-		//RETORNAR AS TAREFAS CADASTRADAS
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		//RETORNAR AS TAREFAS CADASTRADAS	
 		this.tarefas = tarefaRepository.GetTarefas();
-		System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+
 	}
  
  

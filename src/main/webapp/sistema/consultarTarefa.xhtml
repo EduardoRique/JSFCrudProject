@@ -25,32 +25,32 @@
                          rowsPerPageTemplate="5,10,15"
                          style="width:98%;">
  
-						 <p:column headerText="Número">
+						 <p:column filterBy="#{tarefa.codigo}" headerText="Número">
             				<h:outputText value="#{tarefa.codigo}" />
         				 </p:column>
  
-        				 <p:column headerText="Titulo">
+        				 <p:column filterBy="#{tarefa.titulo}" headerText="Titulo">
             				<h:outputText value="#{tarefa.titulo}" />
         				 </p:column>
  
-        				 <p:column headerText="Descrição">
+        				 <p:column filterBy="#{tarefa.descricao}" headerText="Descrição">
             				<h:outputText value="#{tarefa.descricao}" />
         				 </p:column>
  
-        				 <p:column headerText="Responsável">
+        				 <p:column filterBy="#{tarefa.responsavel}" headerText="Responsável">
             				<h:outputText value="#{tarefa.responsavel}">            					
             				</h:outputText>
         				 </p:column>
  
-        				 <p:column headerText="Prioridade" style="width:200px;">
+        				 <p:column headerText="Prioridade">
             				<h:outputText value="#{tarefa.prioridade}" />
         				 </p:column>
  
-        				 <p:column headerText="Situação" style="width:200px;">
+        				 <p:column filterBy="#{tarefa.situacao}" headerText="Situação">
             				<h:outputText value="#{tarefa.situacao}" />
         				 </p:column>
         				 
-        				 <p:column headerText="Deadline" style="width:200px;">
+        				 <p:column headerText="Deadline">
             				<h:outputText value="#{tarefa.deadline}" />
         				 </p:column>
  
